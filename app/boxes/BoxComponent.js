@@ -1,21 +1,13 @@
 'use strict';
 
 import React, { Component } from 'react';
-import { View, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { connect } from 'react-redux'
+import CatalogueView from './CatalogueView'
 import * as SceneConst from '../scene/Const'
 import { Actions } from 'react-native-router-flux'
 import Style from '../view/Style'
-import * as boxes from './BoxActions'
-
-import {
-  SocialIcon,
-  Text,
-  Button,
-  FormLabel,
-  FormInput,
-  FormValidationMessage
-} from 'react-native-elements'
+import * as catalogue from './CatalogueActions'
 
 import colors from 'HSColors'
 import socialColors from 'HSSocialColors'
@@ -23,11 +15,7 @@ import fonts from 'HSFonts'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import ListBoxes from './ListBoxes';
 
-class MyBoxesComponent extends Component {
-
-  _onClickPlayButton() {
-
-  }
+class BoxComponent extends Component {
 
   render() {
     return (
@@ -35,15 +23,18 @@ class MyBoxesComponent extends Component {
         <View style={styles.container}>
           <View style={styles.headerContainer}>
             <Icon color='white' name='card-giftcard' size={62} />
-            <Text style={styles.title}>MY BOXES</Text>
+            <Text style={styles.title}>{this.props.boxName}</Text>
           </View>
-          <ListBoxes onPress={this.props.openBox}></ListBoxes>
         </View>
 
       </View>
     )
   }
 }
+
+BoxComponent.propTypes = {
+  boxName: React.PropTypes.string.isRequired
+};
 
 var styles = StyleSheet.create({
   headerContainer: {
@@ -67,16 +58,19 @@ var styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => ({ boxName : state.get('boxName'),
+// Container component:
+const mapStateToProps = (state) => ({
+  boxName : state.getIn(['box', 'boxSelectedName']),
 })
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    openBox: (name) => {
-      Actions[SceneConst.SELECTED_BOX_SCENE]();
-      dispatch(boxes.clickOnBox(name))
+  /*return {
+    setDemo: (demo) => {
+      dispatch(catalogue.setDemo(demo))
     }
-  }
+  }*/
+
+return {}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MyBoxesComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(BoxComponent)
