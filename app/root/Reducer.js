@@ -5,12 +5,12 @@
 
 import { combineReducers } from 'redux-immutable'
 import sceneReducer from '../scene/SceneReducer'
-import BoxReducer from '../boxes/BoxReducer'
+import BoxesReducer from '../boxes/BoxesReducer'
 
 // two reducers to combine, the one managing the ble and the one managing the routes!
 export default combineReducers({
   route: sceneReducer,
-  box: BoxReducer
+  boxes: BoxesReducer
 })
 
 /* Those two functions are the same

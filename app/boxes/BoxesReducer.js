@@ -1,7 +1,7 @@
 'use strict';
 
 import { Map, fromJS } from 'immutable'
-import * as boxes from './BoxActions'
+import * as boxes from './BoxesActions'
 
 const defaultState = fromJS({
   boxSelectedName: undefined,
@@ -11,8 +11,7 @@ const defaultState = fromJS({
 export default function (state = defaultState, action) {
     switch(action.type) {
         case boxes.CLICK_ON_BOX:
-          let newState = state.set('boxSelectedName', action.name);
-          return newState;
+          return state.set('boxSelectedName', action.name);
         default:
           return state;
     }

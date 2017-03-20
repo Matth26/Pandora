@@ -1,13 +1,7 @@
 'use strict';
 
-import React, { Component, PropTypes } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
-import { connect } from 'react-redux'
-//import ImmutableListView from '../view/ImmutableListView'
-import * as SceneConst from '../scene/Const'
-import { Actions } from 'react-native-router-flux'
-import Style from '../view/Style'
-import * as box from './BoxActions'
+import React, { PropTypes } from 'react';
+import { StyleSheet, ScrollView } from 'react-native';
 
 import colors from 'HSColors'
 
@@ -38,7 +32,7 @@ const list = [
 ]
 
 const ListBoxes = (props) => {
-  
+
   return (
     <ScrollView>
       <List>
@@ -64,14 +58,5 @@ const ListBoxes = (props) => {
 ListBoxes.propTypes = {
   onPress: PropTypes.func.isRequired,
 }
-
-var styles = StyleSheet.create({
-  background: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    borderWidth: 2,
-    overflow: 'hidden'
-  }
-});
 
 export default ListBoxes

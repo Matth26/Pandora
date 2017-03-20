@@ -1,19 +1,12 @@
 'use strict';
 
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux'
-import CatalogueView from './CatalogueView'
-import * as SceneConst from '../scene/Const'
-import { Actions } from 'react-native-router-flux'
 import Style from '../view/Style'
-import * as catalogue from './CatalogueActions'
 
 import colors from 'HSColors'
-import socialColors from 'HSSocialColors'
-import fonts from 'HSFonts'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import ListBoxes from './ListBoxes';
 
 class BoxComponent extends Component {
 
@@ -60,7 +53,7 @@ var styles = StyleSheet.create({
 
 // Container component:
 const mapStateToProps = (state) => ({
-  boxName : state.getIn(['box', 'boxSelectedName']),
+  boxName : state.getIn(['boxes', 'boxSelectedName']),
 })
 
 const mapDispatchToProps = (dispatch) => {

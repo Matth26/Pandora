@@ -1,33 +1,22 @@
 'use strict';
 
 import React, { Component } from 'react';
-import { View, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { connect } from 'react-redux'
 import * as SceneConst from '../scene/Const'
 import { Actions } from 'react-native-router-flux'
 import Style from '../view/Style'
-import * as boxes from './BoxActions'
+import * as boxes from './BoxesActions'
 
 import {
-  SocialIcon,
   Text,
-  Button,
-  FormLabel,
-  FormInput,
-  FormValidationMessage
 } from 'react-native-elements'
 
 import colors from 'HSColors'
-import socialColors from 'HSSocialColors'
-import fonts from 'HSFonts'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import ListBoxes from './ListBoxes';
 
-class MyBoxesComponent extends Component {
-
-  _onClickPlayButton() {
-
-  }
+class BoxesComponent extends Component {
 
   render() {
     return (
@@ -39,13 +28,17 @@ class MyBoxesComponent extends Component {
           </View>
           <ListBoxes onPress={this.props.openBox}></ListBoxes>
         </View>
-
       </View>
     )
   }
 }
 
 var styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+  },
   headerContainer: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -53,21 +46,14 @@ var styles = StyleSheet.create({
     padding: 20,
     backgroundColor: colors.primary1
   },
-  container: {
-    //backgroundColor: colors.primary,
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-  },
-  title:
-  {
+  title: {
     color: 'white',
     paddingLeft: 20,
     fontSize: 30,
   },
 });
 
-const mapStateToProps = (state) => ({ boxName : state.get('boxName'),
+const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => {
@@ -79,4 +65,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MyBoxesComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(BoxesComponent)
