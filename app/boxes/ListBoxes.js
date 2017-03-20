@@ -7,37 +7,12 @@ import colors from 'HSColors'
 
 import { List, ListItem } from 'react-native-elements'
 
-const list = [
-  {
-    title: 'Box 1',
-    icon: 'av-timer',
-    isOpenable: true,
-  },
-  {
-    title: 'Box 2',
-    icon: 'av-timer',
-    isOpenable: true,
-  },
-  {
-    title: 'Box 3',
-    icon: 'av-timer',
-    isOpenable: false,
-  },
-  {
-    title: 'Box 4',
-    icon: 'av-timer',
-    isOpenable: true,
-  },
-
-]
-
 const ListBoxes = (props) => {
-
   return (
-    <ScrollView>
+    <ScrollView contentContainerStyle={{paddingBottom: 50}}>
       <List>
         {
-          list.map((item, i) => (
+          props.list.map((item, i) => (
             <ListItem
               key={i}
               title={item.title}
